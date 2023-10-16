@@ -5,7 +5,7 @@
 
 
 //location is SETS of coordinates that reference the location of all of the parts of the piece in the 2darray(board)
-location[][] 
+int location[1][2];
 
 
 
@@ -13,7 +13,7 @@ location[][]
 piece(int type, array initialLocation, int orientation){
     //update location to include all spots the piece is on the board based on orrientation and initial location 
     
-    board.addPiece(type, location[][]);
+    board.addPiece(type, int location[][]);
 }
 
 void movePiece(int piece, string direction, int steps){
