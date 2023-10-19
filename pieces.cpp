@@ -32,10 +32,10 @@ public:
         }
         
         // check if new location is within board bounds
-        if (currentLocation.first < 0 || currentLocation.first >= board.size() ||
-            currentLocation.second < 0 || currentLocation.second >= board[0].size()) {
-            return false;
-        }
+        // if (currentLocation.first < 0 || currentLocation.first >= board.size() ||
+        //     currentLocation.second < 0 || currentLocation.second >= board[0].size()) {
+        //     return false;
+        // }
         
         // check if new location overlaps with another piece
         for (const auto& piece : board) {
