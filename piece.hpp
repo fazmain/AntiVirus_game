@@ -4,6 +4,7 @@
 // orientation is a 0-3 that indicates the orientation of the piece
 #include <exception>
 #include <string.h>
+#include "Board.hpp"
 using namespace std;
 
 class piece 
@@ -12,14 +13,15 @@ class piece
     //location is SETS of coordinates that reference the location of all of the parts of the piece in the 2darray(board)
     public:
         int location[3][2];
-        board = board;
+        // add a board object to the piece class
+        Board board;
     private:
-        int type;
+        char type;
         int initialLocation[2];
         int orientation;
         
     // constructor for piece
-    piece(int type, int initialLocation[2], int orientation){
+    piece(char type, int initialLocation[2], int orientation){
         //update location to include all spots the piece is on the board based on orrientation and initial location 
     /*
     - W: Blocker, a piece that takes up a single space and can not be moved 1.2.10
@@ -58,34 +60,34 @@ class piece
                 }
             break;
         }
-        board.addPiece(type, location);
+        board.addPiece(location, type);
     }
 
     // method to move the piece
-    void movePiece(String direction, int steps){
+    void movePiece(string direction, int steps){
     
         if(isValidMove(direction, steps)){
             board.removePiece(location);
             //update location
-            if(strcmp(direction, "NE") == 0){
+            if(direction.compare("NE") == 0){
                 for(int i = 0; i < 3; i++){//up
                     location[i][0] = location[i][0] + steps;
                 }
-            } else if(strcmp(direction, "NW")==0){//left
+            } else if(direction.compare("NW")==0){//left
                 for(int i = 0; i < 3; i++){
                     location[i][1] = location[i][1] - steps;
                 }
-            } else if(strcmp(direction, "SE")==0){//right
+            } else if(direction.compare("SE")==0){//right
                 for(int i = 0; i < 3; i++){
                     location[i][1] = location[i][1] + steps;
                 }
-            } else if(strcmp(direction, "SW")==0){//down
+            } else if(direction.compare("SW")==0){//down
                 for(int i = 0; i < 3; i++){
                     location[i][0] = location[i][0] - steps;
                 }
             }
 
-            board.addPiece(type, location);
+            board.addPiece(location, type);
             if(type == 0){
                 if(checkVictoryCondition()){
                 //throw exception("Victory");
