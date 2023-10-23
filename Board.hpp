@@ -26,6 +26,7 @@ public:
    void showBackend();
    void showFrontend();
    void addPiece(int coords[3][2], char x);
+   void removePiece(int coords[3][2]);
 };
 
 //Initialize an empty board
@@ -122,5 +123,19 @@ void Board::addPiece(int coords[3][2], char insert){
     }
 }
 
+void Board::removePiece(int coords[3][2]){
+    int i = 0;
+    int j = 0;
+    while ((coords[i][j] != -1) && (i < 3)){
+        int x;
+        int y;
+        x = coords[i][j];
+        j++;
+        y = coords[i][j];
+        theBoard[x][y] = 'e';
+        i++;
+        j--;
+    }
+}
 
 #endif //DESKTOP_BOARD_HPP
