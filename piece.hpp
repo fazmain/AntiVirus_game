@@ -18,6 +18,11 @@ class piece
         int location[3][2];
         // add a board object to the piece class
         Board board;
+        piece(char type, int initialLocation[2], int orientation);
+        void movePiece(string direction, int steps);
+        bool checkVictoryCondition();
+        bool isValidMove(string direction, int steps);
+
     private:
         char type;
         int initialLocation[2];
