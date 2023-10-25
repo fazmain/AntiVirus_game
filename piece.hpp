@@ -114,10 +114,8 @@ class piece
         }
     }
 
-    bool isValidMove(string direction, int steps){
-        // always return true
-        return true;
     bool piece::isValidMove(string direction, int steps){
+        return true;
     }
 
 #endif
