@@ -90,11 +90,13 @@ class piece
             board.addPiece(location, type);
             if(type == 0){
                 if(checkVictoryCondition()){
+                    cout << "Victory" << endl;
                 //throw exception("Victory");
                 }
             }
         } else{
             //throw exception("Invalid Move");
+            cout << "Invalid Move" << endl;
         }
     }
 
@@ -110,6 +112,8 @@ class piece
     }
 
     bool isValidMove(string direction, int steps){
+        // always return true
+        return true;
     }
 
 };
