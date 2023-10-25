@@ -1,3 +1,6 @@
+#ifndef PIECE_HPP
+#define PIECE_HPP
+
 // we have a piece class that has a type, initialLocation, and orientation
 // type is a 0-9 that indicated the type/shape of piece 
 // initialLocation is two ints referencing the indicy of the starting point of the piece in the 2d array
@@ -19,9 +22,9 @@ class piece
         char type;
         int initialLocation[2];
         int orientation;
-        
+};   
     // constructor for piece
-    piece(char type, int initialLocation[2], int orientation){
+    piece::piece(char type, int initialLocation[2], int orientation){
         //update location to include all spots the piece is on the board based on orrientation and initial location 
     /*
     - W: Blocker, a piece that takes up a single space and can not be moved 1.2.10
@@ -64,7 +67,7 @@ class piece
     }
 
     // method to move the piece
-    void movePiece(string direction, int steps){
+    void piece::movePiece(string direction, int steps){
     
         if(isValidMove(direction, steps)){
             board.removePiece(location);
@@ -100,7 +103,7 @@ class piece
 
 
     // method to check victory condition
-    bool checkVictoryCondition(){
+    bool piece::checkVictoryCondition(){
         //check if red virus is in the appropriate location
         if ((location[0][0] == 0 && location[0][1] == 5) || (location[1][0] == 0 && location[1][1] == 5)){
             return true;
@@ -109,7 +112,7 @@ class piece
         }
     }
 
-    bool isValidMove(string direction, int steps){
+    bool piece::isValidMove(string direction, int steps){
     }
 
-};
+#endif
