@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string.h>
 
 #include "Border.hpp"
 #include "piece.hpp"
@@ -15,7 +14,8 @@ int main() {
 
     gameboard.showBackend();
     gameboard.showFrontend();
-    //virus.move()
+    virus.movePiece("NW", 1);
+    gameboard.showFrontend();
 
     return 0;
 }
