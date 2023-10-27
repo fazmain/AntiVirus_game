@@ -67,6 +67,8 @@ piece::piece(char type, int initialLocation[2], int orientation, Board* board){
                     location[1][1] = initialLocation[1] - 1;
                     break;
             }
+            location[2][0] = -1;
+            location[2][1] = -1;
             break;
     }
     board->addPiece(location, type);
