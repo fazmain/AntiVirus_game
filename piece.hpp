@@ -7,6 +7,7 @@
 // orientation is a 0-3 that indicates the orientation of the piece
 #include <exception>
 #include <string.h>
+#include <iostream>
 #include "Border.hpp"
 using namespace std;
 
@@ -45,11 +46,9 @@ piece::piece(char type, int initialLocation[2], int orientation, Board* board){
     - 8: Yellow Virus 1.2.9*/
     location[0][0] = initialLocation[0];
     location[0][1] = initialLocation[1];
-    switch (type)
-    {
-        case 0 || 1:
-            switch (orientation)
-            {
+    switch (type) {
+        case '0':
+            switch (orientation) {
                 case 0:
                     location[1][0] = initialLocation[0] + 1;
                     location[1][1] = initialLocation[1];
@@ -70,7 +69,13 @@ piece::piece(char type, int initialLocation[2], int orientation, Board* board){
             location[2][0] = -1;
             location[2][1] = -1;
             break;
+
     }
+    /*for (int i = 0; i<3; i++){
+        for (int j = 0; j<2; j++){
+            cout<<location[i][j]<<endl;
+        }
+    }*/
     board->addPiece(location, type);
 }
 
@@ -78,15 +83,19 @@ piece::piece(char type, int initialLocation[2], int orientation, Board* board){
 void piece::movePiece(string direction, int steps){
 
     if(isValidMove(direction, steps)){
-        board->removePiece(location);
+        //board->removePiece(location);
         //update location
+        cout<<"heelloe"<<endl;
         if(direction.compare("NE") == 0){
             for(int i = 0; i < 3; i++){//up
                 location[i][0] = location[i][0] + steps;
             }
         } else if(direction.compare("NW")==0){//left
+            cout<<"hi"<<endl;
             for(int i = 0; i < 3; i++){
-                location[i][1] = location[i][1] - steps;
+                if(!location[i][1] == -1) {
+                    location[i][1] = location[i][1] - steps;
+                }
             }
         } else if(direction.compare("SE")==0){//right
             for(int i = 0; i < 3; i++){
@@ -99,12 +108,13 @@ void piece::movePiece(string direction, int steps){
         }
 
         board->addPiece(location, type);
+        /*
         if(type == 0){
             if(checkVictoryCondition()){
                 cout << "Victory" << endl;
                 //throw exception("Victory");
             }
-        }
+        }*/
     } else{
         //throw exception("Invalid Move");
         cout << "Invalid Move" << endl;
