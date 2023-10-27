@@ -1,7 +1,3 @@
-//
-// Created by johns on 10/17/2023.
-//
-
 #ifndef DESKTOP_BOARD_HPP
 #define DESKTOP_BOARD_HPP
 
@@ -13,25 +9,25 @@ using namespace std;
 class Board {
 private:
     string theBoard[9][9] {{" ", " ", " ", " ", "e", " "," ", " ", " "},
-                          {" ", " ", " ", " ", "e", " "," ", " ", " "},
-                          {" ", " ", " ", "e", "e", "e"," ", " ", " "},
-                          {" ", " ", "e", "e", "e", "e","e", " ", " "},
-                          {" ", "e", "e", "e", "e", "e","e", "e", " "},
-                          {" ", " ", "e", "e", "e", "e","e", " ", " "},
-                          {" ", " ", " ", "e", "e", "e"," ", " ", " "},
-                          {" ", " ", " ", " ", "e", " "," ", " ", " "},
-                          {" ", " ", " ", " ", " ", " "," ", " ", " "}};
+                           {" ", " ", " ", " ", "e", " "," ", " ", " "},
+                           {" ", " ", " ", "e", "e", "e"," ", " ", " "},
+                           {" ", " ", "e", "e", "e", "e","e", " ", " "},
+                           {" ", "e", "e", "e", "e", "e","e", "e", " "},
+                           {" ", " ", "e", "e", "e", "e","e", " ", " "},
+                           {" ", " ", " ", "e", "e", "e"," ", " ", " "},
+                           {" ", " ", " ", " ", "e", " "," ", " ", " "},
+                           {" ", " ", " ", " ", " ", " "," ", " ", " "}};
 public:
-   Board();
-   void showBackend();
-   void showFrontend();
-   void addPiece(int coords[3][2], char x);
-   void removePiece(int coords[3][2]);
+    Board();
+    void showBackend();
+    void showFrontend();
+    void addPiece(int coords[3][2], char x);
+    void removePiece(int coords[3][2]);
 };
 
 //Initialize an empty board
 Board::Board(){
-    }
+}
 
 //Show back-end version of the board (diamond-shaped version)
 void Board::showBackend(){
