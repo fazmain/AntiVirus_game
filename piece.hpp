@@ -11,14 +11,13 @@
 #include "Border.hpp"
 using namespace std;
 
-class piece
-{
+class piece{
 
     //location is SETS of coordinates that reference the location of all of the parts of the piece in the 2darray(board)
 public:
     int location[3][2];
     // add a board object to the piece class
-    Board* board;
+    Board* Board;
     piece(char type, int initialLocation[2], int orientation, Board* board);
     void movePiece(string direction, int steps);
     bool checkVictoryCondition();
@@ -30,8 +29,8 @@ private:
     int orientation;
 };
 // constructor for piece
-piece::piece(char type, int initialLocation[2], int orientation, Board* board){
-    board = board;
+piece::piece(char type, int initialLocation[2], int orientation, Board::Board* board){
+    this -> Board;
     //update location to include all spots the piece is on the board based on orrientation and initial location
     /*
     - W: Blocker, a piece that takes up a single space and can not be moved 1.2.10
@@ -76,16 +75,22 @@ piece::piece(char type, int initialLocation[2], int orientation, Board* board){
             cout<<location[i][j]<<endl;
         }
     }*/
-    board->addPiece(location, type);
+    Board->addPiece(location, type);
 }
 
 // method to move the piece
 void piece::movePiece(string direction, int steps){
 
     if(isValidMove(direction, steps)){
+        for (int i = 0; i<3; i++){
+            for (int j = 0; j<2; j++){
+                cout<<location[i][j]<<endl;
+            }
+        }
+
         //board->removePiece(location);
         //update location
-        cout<<"heelloe"<<endl;
+
         if(direction.compare("NE") == 0){
             for(int i = 0; i < 3; i++){//up
                 location[i][0] = location[i][0] + steps;
@@ -93,7 +98,9 @@ void piece::movePiece(string direction, int steps){
         } else if(direction.compare("NW")==0){//left
             cout<<"hi"<<endl;
             for(int i = 0; i < 3; i++){
-                if(!location[i][1] == -1) {
+                cout<<"frik"<<endl;
+                if(!(location[i][1] == -1)) {
+                    cout<<"urmom"<<endl;
                     location[i][1] = location[i][1] - steps;
                 }
             }
@@ -107,7 +114,12 @@ void piece::movePiece(string direction, int steps){
             }
         }
 
-        board->addPiece(location, type);
+        for (int i = 0; i<3; i++){
+            for (int j = 0; j<2; j++){
+                cout<<location[i][j]<<endl;
+            }
+        }
+        Board->addPiece(location, type);
         /*
         if(type == 0){
             if(checkVictoryCondition()){
