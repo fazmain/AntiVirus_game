@@ -1,20 +1,20 @@
 #include <iostream>
 #include <string.h>
 
-#include "Board.hpp"
+#include "Border.hpp"
 #include "piece.hpp"
 
 using namespace std;
 
-int main{
-    board gameboard;
-    piece[] pieces;
+int main() {
+    Board gameboard;
 
-    int[] eek = [3,4]
-    piece virus('0',eek ,0);
+    int eek[2] = {3,4};
+    piece virus('0',eek ,0, &gameboard);
 
-    gameboard.Frontend();
-    
+
+    gameboard.showBackend();
+    gameboard.showFrontend();
     //virus.move()
 
     return 0;
