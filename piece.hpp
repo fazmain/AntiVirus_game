@@ -19,7 +19,7 @@ public:
     int location[3][2];
     // add a board object to the piece class
     Board* board;
-    piece(char type, int initialLocation[2], int orientation, Board* board);
+    piece(char* type, int initialLocation[2], int orientation, Board* board);
     void movePiece(string direction, int steps);
     bool checkVictoryCondition();
     bool isValidMove(string direction, int steps);
@@ -28,11 +28,12 @@ public:
 private:
     int initialLocation[2];
     int orientation;
-    char type;
+    char* type;
 };
 // constructor for piece
-piece::piece(char type, int initialLocation[2], int orientation, Board* board){
+piece::piece(char* type, int initialLocation[2], int orientation, Board* board){
     this -> board = board;
+    this -> type = type;
     //update location to include all spots the piece is on the board based on orrientation and initial location
     /*
     - W: Blocker, a piece that takes up a single space and can not be moved 1.2.10
@@ -47,7 +48,7 @@ piece::piece(char type, int initialLocation[2], int orientation, Board* board){
     - 8: Yellow Virus 1.2.9*/
     location[0][0] = initialLocation[0];
     location[0][1] = initialLocation[1];
-    switch (type) {
+    switch (*type) {
         case '0':
             switch (orientation) {
                 case 0:
@@ -77,7 +78,7 @@ piece::piece(char type, int initialLocation[2], int orientation, Board* board){
             cout<<location[i][j]<<endl;
         }
     }*/
-    board->addPiece(location, type);
+    board->addPiece(location, *type);
 }
 
 // method to move the piece
@@ -107,7 +108,7 @@ void piece::movePiece(string direction, int steps){
             }
         }
         // add the new piece to the board
-        board->addPiece(location, this->getType());
+        board->addPiece(location, *type);
 
         /*
         if(type == 0){
@@ -122,7 +123,7 @@ void piece::movePiece(string direction, int steps){
     }
 }
 char piece::getType() const {
-            return type;
+            return *type;
         }
 
 // method to check victory condition

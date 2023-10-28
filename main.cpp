@@ -7,9 +7,10 @@ using namespace std;
 
 int main() {
     Board gameboard;
+    char* zero = "0";
 
     int location[2] = {3,4};
-    piece virus('0',location ,0, &gameboard);
+    piece virus(zero,location ,0, &gameboard);
 
 
     gameboard.showBackend();
@@ -17,7 +18,6 @@ int main() {
     virus.movePiece("NW", 2);
     gameboard.showBackend();
     gameboard.showFrontend();
-    cout << virus.getType() << endl;
 
     return 0;
 }
