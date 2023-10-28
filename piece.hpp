@@ -8,7 +8,7 @@
 #include <exception>
 #include <string.h>
 #include <iostream>
-#include "Border.hpp"
+#include "Board.hpp"
 using namespace std;
 
 class piece
@@ -23,15 +23,16 @@ public:
     void movePiece(string direction, int steps);
     bool checkVictoryCondition();
     bool isValidMove(string direction, int steps);
+    char getType() const;
 
 private:
-    char type;
     int initialLocation[2];
     int orientation;
+    char type;
 };
 // constructor for piece
 piece::piece(char type, int initialLocation[2], int orientation, Board* board){
-    board = board;
+    this -> board = board;
     //update location to include all spots the piece is on the board based on orrientation and initial location
     /*
     - W: Blocker, a piece that takes up a single space and can not be moved 1.2.10
@@ -81,9 +82,10 @@ piece::piece(char type, int initialLocation[2], int orientation, Board* board){
 
 // method to move the piece
 void piece::movePiece(string direction, int steps){
-
+    //check if move is valid
     if(isValidMove(direction, steps)){
-        //board->removePiece(location);
+        //remove piece from board
+        board->removePiece(location);
         //update location
         cout<<"heelloe"<<endl;
         if(direction.compare("NE") == 0){
@@ -93,9 +95,7 @@ void piece::movePiece(string direction, int steps){
         } else if(direction.compare("NW")==0){//left
             cout<<"hi"<<endl;
             for(int i = 0; i < 3; i++){
-                if(!location[i][1] == -1) {
-                    location[i][1] = location[i][1] - steps;
-                }
+                location[i][1] = location[i][1] - steps;
             }
         } else if(direction.compare("SE")==0){//right
             for(int i = 0; i < 3; i++){
@@ -106,8 +106,9 @@ void piece::movePiece(string direction, int steps){
                 location[i][0] = location[i][0] - steps;
             }
         }
+        // add the new piece to the board
+        board->addPiece(location, this->getType());
 
-        board->addPiece(location, type);
         /*
         if(type == 0){
             if(checkVictoryCondition()){
@@ -120,7 +121,9 @@ void piece::movePiece(string direction, int steps){
         cout << "Invalid Move" << endl;
     }
 }
-
+char piece::getType() const {
+            return type;
+        }
 
 // method to check victory condition
 bool piece::checkVictoryCondition(){
