@@ -11,8 +11,7 @@
 #include "Board.hpp"
 using namespace std;
 
-class piece
-{
+class piece{
 
     //location is SETS of coordinates that reference the location of all of the parts of the piece in the 2darray(board)
 public:
@@ -88,7 +87,7 @@ void piece::movePiece(string direction, int steps){
         //remove piece from board
         board->removePiece(location);
         //update location
-        cout<<"heelloe"<<endl;
+
         if(direction.compare("NE") == 0){
             for(int i = 0; i < 3; i++){//up
                 location[i][0] = location[i][0] + steps;
