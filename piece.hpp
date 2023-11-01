@@ -38,13 +38,13 @@ piece::piece(char* type, int initialLocation[2], int orientation, Board* board){
     - W: Blocker, a piece that takes up a single space and can not be moved 1.2.10
     - 0: Red Virus orrientation: 0=down 1=right 2=up 3=left
     - 1: Blue Virus orrientation: 0=down 1=right 2=up 3=left
-    - 2: Orange Virus 1.2.3
-    - 3: Pink Virus 1.2.4
-    - 4: Dark Green Virus 1.2.5
-    - 5: Blue Virus 1.2.6
-    - 6: Purple Virus 1.2.7
-    - 7: Light Green Virus 1.2.8
-    - 8: Yellow Virus 1.2.9*/
+    - 2: Orange Virus 1.2.3 orreintation: 0=down,right 1=up,right 2=up,left 3=down,left (middle dot=initial location)
+    - 3: Pink Virus 1.2.4 0=down,right 1=up,right 2=up,left 3=down,left
+    - 4: Dark Green Virus 1.2.5 0=down,right 1=up,right 2=up,left 3=down,left
+    - 5: Dark lue Virus 1.2.6 0=down,right 1=up,right 2=up,left 3=down,left
+    - 6: Purple Virus 1.2.7 0=down, 1=right, 2=up, left (intiial is middle dot)
+    - 7: Light Green Virus 1.2.8 0=down 1=right 2=up 3=left (initial locationdot is the dot at the end of pair)
+    - 8: Yellow Virus 1.2.9 0=down 1=right 2=up 3=left (initial locationdot is the dot at the end of pair) */
     location[0][0] = initialLocation[0];
     location[0][1] = initialLocation[1];
     switch (*type) {
