@@ -87,13 +87,11 @@ void piece::movePiece(string direction, int steps){
         //remove piece from board
         board->removePiece(location);
         //update location
-
-        if(direction.compare("NE") == 0){
+        if(direction.compare("SW") == 0){
             for(int i = 0; i < 3; i++){//up
                 location[i][0] = location[i][0] + steps;
             }
         } else if(direction.compare("NW")==0){//left
-            cout<<"hi"<<endl;
             for(int i = 0; i < 3; i++){
                 location[i][1] = location[i][1] - steps;
             }
@@ -101,7 +99,7 @@ void piece::movePiece(string direction, int steps){
             for(int i = 0; i < 3; i++){
                 location[i][1] = location[i][1] + steps;
             }
-        } else if(direction.compare("SW")==0){//down
+        } else if(direction.compare("NE")==0){//down
             for(int i = 0; i < 3; i++){
                 location[i][0] = location[i][0] - steps;
             }
@@ -109,13 +107,18 @@ void piece::movePiece(string direction, int steps){
         // add the new piece to the board
         board->addPiece(location, *type);
 
-        /*
-        if(type == 0){
+        if(*type == '0'){
             if(checkVictoryCondition()){
-                cout << "Victory" << endl;
+                cout << endl;
+                cout << endl;
+                cout << "*****************" << endl;
+                cout << "*   Victory!   *" << endl;
+                cout << "*****************" << endl;
+                cout << endl;
+                cout << endl;
                 //throw exception("Victory");
             }
-        }*/
+        }
     } else{
         //throw exception("Invalid Move");
         cout << "Invalid Move" << endl;
@@ -128,7 +131,7 @@ char piece::getType() const {
 // method to check victory condition
 bool piece::checkVictoryCondition(){
     //check if red virus is in the appropriate location
-    if ((location[0][0] == 0 && location[0][1] == 5) || (location[1][0] == 0 && location[1][1] == 5)){
+    if ((location[0][0] == 0 && location[0][1] == 4) || (location[1][0] == 1 && location[1][1] == 4)){
         return true;
     } else {
         return false;
@@ -136,7 +139,13 @@ bool piece::checkVictoryCondition(){
 }
 
 bool piece::isValidMove(string direction, int steps){
-    return true;
+    if (direction.compare("NW") != 0 && direction.compare("NE") != 0 && direction.compare("SW") != 0 && direction.compare("SE") != 0){
+        return false;
+    }
+    else { 
+        return true;
+    }
+    
 }
 
 #endif
