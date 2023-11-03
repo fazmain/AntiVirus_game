@@ -41,13 +41,19 @@ piece::piece(char* type, int initialLocation[2], int orientation, Board* board){
     - 2: Orange Virus 1.2.3 orreintation: 0=down,right 1=up,right 2=up,left 3=down,left (middle dot=initial location)
     - 3: Pink Virus 1.2.4 0=down,right 1=up,right 2=up,left 3=down,left
     - 4: Dark Green Virus 1.2.5 0=down,right 1=up,right 2=up,left 3=down,left
-    - 5: Dark lue Virus 1.2.6 0=down,right 1=up,right 2=up,left 3=down,left
+    - 5: Dark Blue Virus 1.2.6 0=down,right 1=up,right 2=up,left 3=down,left
     - 6: Purple Virus 1.2.7 0=down, 1=right, 2=up, left (intiial is middle dot)
     - 7: Light Green Virus 1.2.8 0=down 1=right 2=up 3=left (initial locationdot is the dot at the end of pair)
     - 8: Yellow Virus 1.2.9 0=down 1=right 2=up 3=left (initial locationdot is the dot at the end of pair) */
     location[0][0] = initialLocation[0];
     location[0][1] = initialLocation[1];
     switch (*type) {
+        case 'W':
+            location[1][0] = -1;
+            location[1][1] = -1;
+            location[2][0] = -1;
+            location[2][1] = -1;
+            break;
         case '0':
             switch (orientation) {
                 case 0:
@@ -70,7 +76,234 @@ piece::piece(char* type, int initialLocation[2], int orientation, Board* board){
             location[2][0] = -1;
             location[2][1] = -1;
             break;
+        case '1':
+            switch (orientation) {
+                case 0:
+                    location[1][0] = initialLocation[0] + 1;
+                    location[1][1] = initialLocation[1];
+                    break;
+                case 1:
+                    location[1][0] = initialLocation[0];
+                    location[1][1] = initialLocation[1] + 1;
+                    break;
+                case 2:
+                    location[1][0] = initialLocation[0] - 1;
+                    location[1][1] = initialLocation[1];
+                    break;
+                case 3:
+                    location[1][0] = initialLocation[0];
+                    location[1][1] = initialLocation[1] - 1;
+                    break;
+            }
+            location[2][0] = -1;
+            location[2][1] = -1;
+            break;
+        case '2':
+            switch (orientation) {
+                case 0:
+                    location[1][0] = initialLocation[0] + 1;
+                    location[1][1] = initialLocation[1];
+                    
+                    location[2][0] = initialLocation[0];
+                    location[2][1] = initialLocation[1] + 1;
+                    break;
+                case 1:
+                    location[1][0] = initialLocation[0];
+                    location[1][1] = initialLocation[1] + 1;
+                    
+                    location[2][0] = initialLocation[0] - 1;
+                    location[2][1] = initialLocation[1];
+                    break;
+                case 2:
+                    location[1][0] = initialLocation[0] - 1;
+                    location[1][1] = initialLocation[1];
+                    
+                    location[2][0] = initialLocation[0];
+                    location[2][1] = initialLocation[1] - 1;
+                    break;
+                case 3:
+                    location[1][0] = initialLocation[0];
+                    location[1][1] = initialLocation[1] - 1;
+                    
+                    location[2][0] = initialLocation[0] + 1;
+                    location[2][1] = initialLocation[0];
+                    break;
+            }
+            break;
+        case '3':
+            switch (orientation) {
+                case 0:
+                    location[1][0] = initialLocation[0] + 1;
+                    location[1][1] = initialLocation[1] + 1;
+                    break;
+                case 1:
+                    location[1][0] = initialLocation[0] - 1;
+                    location[1][1] = initialLocation[1] + 1;
+                    break;
+                case 2:
+                    location[1][0] = initialLocation[0] - 1;
+                    location[1][1] = initialLocation[1] - 1;
+                    break;
+                case 3:
+                    location[1][0] = initialLocation[0] + 1;
+                    location[1][1] = initialLocation[1] - 1;
+                    break;
+            }
+            location[2][0] = -1;
+            location[2][1] = -1;
+            break;
+        case '4':
+            switch (orientation) {
+                case 0:
+                    location[1][0] = initialLocation[0] + 1;
+                    location[1][1] = initialLocation[1] + 1;
+                    break;
+                case 1:
+                    location[1][0] = initialLocation[0] - 1;
+                    location[1][1] = initialLocation[1] + 1;
+                    break;
+                case 2:
+                    location[1][0] = initialLocation[0] - 1;
+                    location[1][1] = initialLocation[1] - 1;
+                    break;
+                case 3:
+                    location[1][0] = initialLocation[0] + 1;
+                    location[1][1] = initialLocation[1] - 1;
+                    break;
+            }
+            location[2][0] = -1;
+            location[2][1] = -1;
+            break;
+        case '5':
+            switch (orientation) {
+                case 0:
+                    location[1][0] = initialLocation[0] + 1;
+                    location[1][1] = initialLocation[1] + 1;
+                    
+                    location[2][0] = initialLocation[0] + 2;
+                    location[2][1] = initialLocation[1] + 2;
+                    break;
+                case 1:
+                    location[1][0] = initialLocation[0] - 1;
+                    location[1][1] = initialLocation[1] + 1;
 
+                    location[2][0] = initialLocation[0] - 2;
+                    location[2][1] = initialLocation[1] + 2;
+                    break;
+                case 2:
+                    location[1][0] = initialLocation[0] - 1;
+                    location[1][1] = initialLocation[1] - 1;
+
+                    location[2][0] = initialLocation[0] - 2;
+                    location[2][1] = initialLocation[1] - 2;
+                    break;
+                case 3:
+                    location[1][0] = initialLocation[0] + 1;
+                    location[1][1] = initialLocation[1] - 1;
+
+                    location[2][0] = initialLocation[0] + 2;
+                    location[2][1] = initialLocation[1] - 2;
+                    break;
+            }
+            break;
+        case '6':
+            switch (orientation) {
+                case 0:
+                    location[1][0] = initialLocation[0] + 1;
+                    location[1][1] = initialLocation[1] + 1;
+                    
+                    location[2][0] = initialLocation[0] + 1;
+                    location[2][1] = initialLocation[1] - 1;
+                    break;
+                case 1:
+                    location[1][0] = initialLocation[0] - 1;
+                    location[1][1] = initialLocation[1] + 1;
+
+                    location[2][0] = initialLocation[0] + 1;
+                    location[2][1] = initialLocation[1] + 1;
+                    break;
+                case 2:
+                    location[1][0] = initialLocation[0] - 1;
+                    location[1][1] = initialLocation[1] - 1;
+
+                    location[2][0] = initialLocation[0] - 1;
+                    location[2][1] = initialLocation[1] + 1;
+                    break;
+                case 3:
+                    location[1][0] = initialLocation[0] + 1;
+                    location[1][1] = initialLocation[1] - 1;
+
+                    location[2][0] = initialLocation[0] - 1;
+                    location[2][1] = initialLocation[1] - 1;
+                    break;
+            }
+            break;
+        case '7':
+            switch (orientation) {
+                case 0:
+                    location[1][0] = initialLocation[0] + 1;
+                    location[1][1] = initialLocation[1];
+                    
+                    location[2][0] = initialLocation[0] + 2;
+                    location[2][1] = initialLocation[1] - 1;
+                    break;
+                case 1:
+                    location[1][0] = initialLocation[0];
+                    location[1][1] = initialLocation[1] + 1;
+
+                    location[2][0] = initialLocation[0] + 1;
+                    location[2][1] = initialLocation[1] + 2;
+                    break;
+                case 2:
+                    location[1][0] = initialLocation[0] - 1;
+                    location[1][1] = initialLocation[1];
+
+                    location[2][0] = initialLocation[0] - 2;
+                    location[2][1] = initialLocation[1] + 1;
+                    break;
+                case 3:
+                    location[1][0] = initialLocation[0];
+                    location[1][1] = initialLocation[1] - 1;
+
+                    location[2][0] = initialLocation[0] - 1;
+                    location[2][1] = initialLocation[1] - 2;
+                    break;
+            }
+            break;
+        case '8':
+            switch (orientation) {
+                case 0:
+                    location[1][0] = initialLocation[0] + 1;
+                    location[1][1] = initialLocation[1];
+                    
+                    location[2][0] = initialLocation[0] + 2;
+                    location[2][1] = initialLocation[1] + 1;
+                    break;
+                case 1:
+                    location[1][0] = initialLocation[0];
+                    location[1][1] = initialLocation[1] + 1;
+
+                    location[2][0] = initialLocation[0] - 1;
+                    location[2][1] = initialLocation[1] + 2;
+                    break;
+                case 2:
+                    location[1][0] = initialLocation[0] - 1;
+                    location[1][1] = initialLocation[1];
+
+                    location[2][0] = initialLocation[0] - 2;
+                    location[2][1] = initialLocation[1] - 1;
+                    break;
+                case 3:
+                    location[1][0] = initialLocation[0];
+                    location[1][1] = initialLocation[1] - 1;
+
+                    location[2][0] = initialLocation[0] + 1;
+                    location[2][1] = initialLocation[1] - 2;
+                    break;
+            }
+            break;
+        default:
+            cout<<"incorect type"<<endl;
     }
     /*for (int i = 0; i<3; i++){
         for (int j = 0; j<2; j++){
