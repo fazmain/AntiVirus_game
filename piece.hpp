@@ -322,19 +322,27 @@ void piece::movePiece(string direction, int steps){
         //update location
         if(direction.compare("SW") == 0){
             for(int i = 0; i < 3; i++){//up
-                location[i][0] = location[i][0] + steps;
+                if(location[i][0] != -1) {
+                    location[i][0] = location[i][0] + steps;
+                }
             }
         } else if(direction.compare("NW")==0){//left
             for(int i = 0; i < 3; i++){
-                location[i][1] = location[i][1] - steps;
+                if(location[i][0] != -1) {
+                    location[i][1] = location[i][1] - steps;
+                }
             }
         } else if(direction.compare("SE")==0){//right
             for(int i = 0; i < 3; i++){
-                location[i][1] = location[i][1] + steps;
+                if(location[i][0] != -1) {
+                    location[i][1] = location[i][1] + steps;
+                }
             }
         } else if(direction.compare("NE")==0){//down
             for(int i = 0; i < 3; i++){
-                location[i][0] = location[i][0] - steps;
+                if(location[i][0] != -1) {
+                    location[i][0] = location[i][0] - steps;
+                }
             }
         }
         // add the new piece to the board
@@ -371,14 +379,58 @@ bool piece::checkVictoryCondition(){
     }
 }
 
-bool piece::isValidMove(string direction, int steps){
-    if (direction.compare("NW") != 0 && direction.compare("NE") != 0 && direction.compare("SW") != 0 && direction.compare("SE") != 0){
+
+bool piece::isValidMove(string direction, int steps) {
+    string localType = "";
+    localType += *type;
+    int tempLocation[3][2] = {{0,0},{0,0},{0,0}};
+    tempLocation[0][0] = location[0][0];
+    tempLocation[0][1] = location[0][1];
+    tempLocation[1][0] = location[1][0];
+    tempLocation[1][1] = location[1][1];
+    tempLocation[2][0] = location[2][0];
+    tempLocation[2][1] = location[2][1];
+
+    if(direction.compare("SW") == 0){
+        for(int i = 0; i < 3; i++){//up
+            if(location[i][0] != -1) {
+                tempLocation[i][0] = tempLocation[i][0] + steps;
+            }
+        }
+    } else if(direction.compare("NW")==0){//left
+        for(int i = 0; i < 3; i++){
+            if(location[i][0] != -1) {
+                tempLocation[i][1] = tempLocation[i][1] - steps;
+            }
+        }
+    } else if(direction.compare("SE")==0){//right
+        for(int i = 0; i < 3; i++){
+            if(location[i][0] != -1) {
+                tempLocation[i][1] = tempLocation[i][1] + steps;
+            }
+        }
+    } else if(direction.compare("NE")==0){//down
+        for(int i = 0; i < 3; i++){
+            if(location[i][0] != -1) {
+                tempLocation[i][0] = tempLocation[i][0] - steps;
+            }
+        }
+    }
+
+    bool f0 = board->checkLocation(tempLocation[0][0], tempLocation[0][1]) != localType && board->checkLocation(tempLocation[0][0], tempLocation[0][1]) != "e";
+    bool f1 = board->checkLocation(tempLocation[1][0], tempLocation[1][1]) != type && board->checkLocation(tempLocation[1][0], tempLocation[1][1]) != "e";
+    bool f2 = false;
+    if(tempLocation[2][0] != -1) {
+        f2 = board->checkLocation(tempLocation[2][0], tempLocation[2][1]) != localType && board->checkLocation(tempLocation[2][0], tempLocation[2][1]) != "e";
+    }
+    //cout<<f0<<" "<<f1<<" "<<f2<<endl;
+
+    if (f0 || f1 || f2){
         return false;
     }
-    else { 
+    else{
         return true;
     }
-    
 }
 
 #endif
