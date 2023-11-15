@@ -24,6 +24,7 @@ public:
     void showFrontend();
     void addPiece(int coords[3][2], char x);
     void removePiece(int coords[3][2]);
+    string checkLocation(int x, int y);
 };
 
 //Initialize an empty board
@@ -133,6 +134,10 @@ void Board::removePiece(int coords[3][2]){
         i++;
         j--;
     }
+}
+
+string Board::checkLocation(int x, int y){
+    return theBoard[x][y];
 }
 
 #endif //DESKTOP_BOARD_HPP
