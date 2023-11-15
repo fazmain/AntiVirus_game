@@ -7,7 +7,7 @@
 ## Playing Instructions
 
 1. Run the code. The default puzzle is Junior 16.
-2. Making Moves: <piece><space><move direction in capital letters [possible directions: NE, NW, SE, SW]><space><steps>
+2. Making Moves: piece name >> space >> move direction in capital letters [possible directions: NE, NW, SE, SW] >> space >> steps
 3. Quitting the game: Make a move that has 'q' in the directions part of the move.
 
 This project is part of our Software Engineering course (CS230).
