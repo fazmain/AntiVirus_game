@@ -1,8 +1,6 @@
-# moving-objects-puzzle
-
 ## AntiVirus sliding game
 
-** Console based game where a 'virus' piece is moved out of the board by sliding other pieces
+** Console-based implementation of the popular logic puzzle "AntiVirus" using C++, where a 'virus' piece is moved out of the board by sliding other pieces.
 
 ## Playing Instructions
 
@@ -12,4 +10,4 @@
 
 This project is part of our Software Engineering course (CS230).
 
-Skills learned: Requirement documents, software design, Agile Software development, Unit testing, Software documentation
+Skills learned: Requirement Documents, Software Design, Agile Software Development, Unit Testing, Software Documentation, User Guides, Programmer's Manual
